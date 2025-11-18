@@ -11,5 +11,5 @@ class TextBox:
         self.color = str(color)
         self.get_rect = pygame.Rect(self.x_pos, self.y_pos, self.width, self.height)
 
-    def drawRect(self, screen):
+    def draw_rect(self, screen):
         return pygame.draw.rect(screen, self.color, self.get_rect, 5)
