@@ -11,7 +11,8 @@ class Fonts:
 
     def fonts(self, screen, textBox):
         createFonts = pygame.font.SysFont("Arial", self.size)
-        renderFont = createFonts.render(self.text, False, self.color)
+        textUpdated = self.text.replace("\r", "")
+        renderFont = createFonts.render(textUpdated, False, self.color)
 
         text_x = textBox.x_pos + 10
         text_y = textBox.y_pos + 5
@@ -19,6 +20,9 @@ class Fonts:
         screen.blit(renderFont, (text_x, text_y))
     
     def fontHandling(self, event):
+        if event.key == pygame.K_RETURN:
+            self.text = ""
+
         if event.key == pygame.K_BACKSPACE:
             self.text = self.text[:-1]
 
@@ -26,3 +30,4 @@ class Fonts:
             if len(self.text) < 12:
                 self.text += event.unicode
 
+# ENTER box is still there just hidden
